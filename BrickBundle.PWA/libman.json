@@ -1,0 +1,59 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "twitter-bootstrap@4.3.1",
+      "files": [
+        "css/bootstrap.css",
+        "css/bootstrap.css.map",
+        "css/bootstrap.min.css",
+        "css/bootstrap.min.css.map",
+        "css/bootstrap-grid.css",
+        "css/bootstrap-grid.css.map",
+        "css/bootstrap-grid.min.css",
+        "css/bootstrap-grid.min.css.map",
+        "css/bootstrap-reboot.css",
+        "css/bootstrap-reboot.css.map",
+        "css/bootstrap-reboot.min.css",
+        "css/bootstrap-reboot.min.css.map"
+      ],
+      "destination": "wwwroot/lib/bootstrap/dist"
+    },
+    {
+      "library": "font-awesome@5.10.2",
+      "files": [
+        "css/all.css",
+        "css/all.min.css",
+        "css/brands.css",
+        "css/brands.min.css",
+        "css/fontawesome.css",
+        "css/fontawesome.min.css",
+        "css/regular.css",
+        "css/regular.min.css",
+        "css/solid.css",
+        "css/solid.min.css",
+        "css/svg-with-js.css",
+        "css/svg-with-js.min.css",
+        "css/v4-shims.css",
+        "css/v4-shims.min.css",
+        "webfonts/fa-brands-400.eot",
+        "webfonts/fa-brands-400.svg",
+        "webfonts/fa-brands-400.ttf",
+        "webfonts/fa-brands-400.woff",
+        "webfonts/fa-brands-400.woff2",
+        "webfonts/fa-regular-400.eot",
+        "webfonts/fa-regular-400.svg",
+        "webfonts/fa-regular-400.ttf",
+        "webfonts/fa-regular-400.woff",
+        "webfonts/fa-regular-400.woff2",
+        "webfonts/fa-solid-900.eot",
+        "webfonts/fa-solid-900.svg",
+        "webfonts/fa-solid-900.ttf",
+        "webfonts/fa-solid-900.woff",
+        "webfonts/fa-solid-900.woff2"
+      ],
+      "destination": "wwwroot/lib/fontawesome"
+    }
+  ]
+}

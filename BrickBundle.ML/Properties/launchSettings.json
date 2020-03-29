@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BrickBundle.ML": {
+      "commandName": "Project",
+      "commandLineArgs": "..\\..\\..\\..\\images\\69127479_424259278191989_609144499943243776_n.jpg"
+    }
+  }
+}

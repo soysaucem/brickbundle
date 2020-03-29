@@ -1,0 +1,116 @@
+{
+  "short_name": "BrickBundle",
+  "name": "BrickBundle",
+  "description": "Catalogue Lego Bricks",
+  "scope": "/",
+  "start_url": "/index.html",
+  "dir": "ltr",
+  "lang": "English",
+  "display": "standalone",
+  "background_color": "#502460",
+  "theme_color": "#502460",
+  "orientation": "any",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/images/icon512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/5c56c2dd-146d-912a-d559-de9b0155e190.webPlatform.png",
+      "sizes": "44x44",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/11c54743-02a3-21c0-54bb-78b60519a6a2.webPlatform.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/120517aa-bf8c-30b4-f177-098f354e8571.webPlatform.png",
+      "sizes": "1240x600",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/9b309c68-e35e-4ee7-d229-fafc4476ad03.webPlatform.png",
+      "sizes": "300x300",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/26ddf3b5-4d4a-4f6f-e63d-3d8f953dd480.webPlatform.png",
+      "sizes": "150x150",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/05116173-569b-68d0-a632-992b5e80a957.webPlatform.png",
+      "sizes": "88x88",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/2d1a0c1c-bf30-b29f-97ca-24dfc736630a.webPlatform.png",
+      "sizes": "24x24",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/f3d121e7-053b-1f39-1717-b3fa8f0bbf3c.webPlatform.png",
+      "sizes": "50x50",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/eb0ecef9-f212-cda9-3c9c-c74bf1f4b606.webPlatform.png",
+      "sizes": "620x300",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/41201c29-667f-cec8-2c95-aad65982d62b.webPlatform.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/6591adbe-c25d-5dff-ad31-a8dc333817f3.webPlatform.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/d78c4b32-c59c-98c1-58e3-ff9026bac6b9.webPlatform.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/f3b07f40-9c06-1579-f385-3d218f5fb9ae.webPlatform.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/748160df-5a2b-4c93-a158-5a951b207601.webPlatform.png",
+      "sizes": "36x36",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/ef9bca17-457f-a9b8-3dbc-ba1533bebac3.webPlatform.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/9e9f4aed-f562-6ce8-b6d6-3c0386240f26.webPlatform.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/6e8a062d-4e78-eb96-f50f-0e2312f0d016.webPlatform.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/daf38f87-44d8-2941-03d3-ba4d0a50ed4e.webPlatform.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/93c05c9a-3783-6ce2-66c0-6110954bf75e.webPlatform.png",
+      "sizes": "76x76",
+      "type": "image/png"
+    }
+  ]
+}

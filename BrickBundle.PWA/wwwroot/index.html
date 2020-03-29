@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#502460">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="BrickBundle">
+    <link rel="icon" type="image/png" sizes="512x512" href="/images/icon512.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="/images/favicon64.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/images/icon-apple512.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/icon-apple192.png">
+    <link rel="manifest" href="/manifest.json">
+
+    <script src="/js/App.js?20191024" type="module"></script>
+    <link rel="stylesheet" type="text/css" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/lib/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/site.css?20191024" />
+
+    <title>BrickBundle</title>
+</head>
+<body>
+    <!--Templates-->
+    <template id="formErrorTemplate">
+        <div class="text-danger"></div>
+    </template>
+    <template id="formSuccessTemplate">
+        <div class="text-success"></div>
+    </template>
+    <template id="userPartTemplate">
+        <li class="userPart">
+            <div class="part-id" style="display:none;"></div>
+            <div class="part-img"><img src="/images/part-missing.png"></div>
+            <div class="part-name"></div>
+            <div class="part-code-label">Code:</div>
+            <div class="part-code"></div>
+            <div class="part-qty-label">Qty:</div>
+            <div class="part-qty"></div>
+        </li>
+    </template>
+    <template id="categoryTemplate">
+        <li class="category"></li>
+    </template>
+    <template id="addPartTemplate">
+        <li class="addPart">
+            <div class="part-id" style="display:none;"></div>
+            <div class="part-img"><img src="/images/part-missing.png"></div>
+            <div class="part-name"></div>
+            <div class="part-code-label">Code:</div>
+            <div class="part-code"></div>
+        </li>
+    </template>
+    <template id="setTemplate">
+        <li class="legoSet">
+            <div class="set-id" style="display:none;"></div>
+            <div class="set-img"><img src="/images/set-missing.jpg"></div>
+            <div class="set-name"></div>
+            <div class="set-number-label">ID:</div>
+            <div class="set-number"></div>
+            <div class="set-numParts-label">Parts:</div>
+            <div class="set-numParts"></div>
+            <div class="set-percent-label">Owned:</div>
+            <div class="set-percent"></div>
+        </li>
+    </template>
+    <!--Loading-->
+    <div id="loading">
+        <div class="loading">
+            <span class="fas fa-circle-notch fa-3x loading-spin"></span>
+        </div>
+    </div>
+    <div class="page">
+        <!--Toolbar-->
+        <header class="toolbar">
+            <div class="toolbar-left">
+                <div id="toolbarbtnBack" class="toolbarbtn" style="display:none;"><span class="fas fa-2x fa-arrow-left"></span></div>
+            </div>
+            <span id="pageTitle" class="pagetitle"></span>
+            <div class="toolbar-right">
+                <div id="toolbarbtnTick" class="toolbarbtn" style="display:none;"><span class="fas fa-2x fa-check"></span></div>
+                <div id="toolbarbtnAddParts" class="toolbarbtn" style="display:none;"><span class="fas fa-2x fa-plus-circle"></span></div>
+                <input id="captureParts" type="file" accept="image/*" capture="environment" style="display:none;" />
+                <label id="toolbarbtnCaptureParts" for="captureParts" class="toolbarbtn" style="display:none;"><span class="fas fa-2x fa-camera"></span></label>
+                <div id="toolbarbtnAccount" class="toolbarbtn"><span class="fas fa-2x fa-user-circle"></span></div>
+            </div>
+        </header>
+        <!--Menu-->
+        <section id="menubar" class="menubar" style="display:none;">
+            <div id="menubarbtnHome" class="menubar-item" name="home">
+                <div>
+                    <span class="fas fa-home menubar-icon"></span>
+                </div>
+                <div>
+                    <span>Home</span>
+                </div>
+            </div>
+            <div id="menubarbtnBricks" class="menubar-item" name="bricks">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 70" class="menubar-icon"><polygon points="0 10 10 10 10 0 40 0 40 10 60 10 60 0 90 0 90 10 100 10 100 70 0 70" /></svg>
+                </div>
+                <div>
+                    <span>Bricks</span>
+                </div>
+            </div>
+            <div id="menubarbtnSets" class="menubar-item" name="sets">
+                <div>
+                    <span class="fas fa-layer-group menubar-icon"></span>
+                </div>
+                <div>
+                    <span>Sets</span>
+                </div>
+            </div>
+        </section>
+        <!--JS warning-->
+        <section id="page0" class="content content-margin">
+            <div class="text-danger">Javascript is required to use BrickBundle.</div>
+        </section>
+        <script type="text/javascript">
+            document.getElementById("page0").style.display = "none";
+        </script>
+        <!--Offline-->
+        <section id="page1" class="content content-margin" style="display:none;">
+            <div class="text-danger">Please enable network and reload.</div>
+        </section>
+        <!--Error-->
+        <section id="page2" class="content content-margin" style="display:none;">
+            <div class="text-danger">An error occured.</div>
+        </section>
+        <!--Dashboard-->
+        <section id="page3" class="content" style="display:none;">
+            <div class="content-centre">
+                <div class="card card-signin mt-5 card-expand">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Welcome to BrickBundle</h5>
+                        <div class="my-3 text-center">Select the <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 70" style="height:0.8rem;"><polygon points="0 10 10 10 10 0 40 0 40 10 60 10 60 0 90 0 90 10 100 10 100 70 0 70" /></svg> icon to view your brick collection.</div>
+                        <div class="my-3 text-center">Select the <span class="fas fa-layer-group"></span> icon to view sets that you can build.</div>
+                        <div class="my-3 text-center">Select the <span class="fas fa-user-circle"></span> icon to view your account settings.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Login-->
+        <section id="page4" class="content" style="display:none;">
+            <div class="content-centre">
+                <div class="card card-signin mt-5 card-expand">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Log In</h5>
+                        <form id="loginForm">
+                            <div class="form-label-group">
+                                <input name="username" type="text" class="form-control" placeholder="Username or Email" required autofocus>
+                                <div name="usernameError" class="validation-error" style="display:none;"></div>
+                            </div>
+                            <div class="form-label-group">
+                                <input name="password" type="password" class="form-control" placeholder="Password">
+                                <div name="passwordError" class="validation-error" style="display:none;"></div>
+                            </div>
+                            <div class="custom-control custom-checkbox mb-3">
+                                <input name="rememberMe" type="checkbox" class="custom-control-input" id="loginRememberMe">
+                                <label class="custom-control-label" for="loginRememberMe">Keep me logged in</label>
+                            </div>
+                            <button id="btnLogin" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Login</button>
+                            <div class="mt-2">
+                                <span>Or <span id="gotoRegister" class="pagelink">Register</span> for a new account</span>
+                            </div>
+                            <div class="mt-2">
+                                <span><span id="gotoForgotPassword" class="pagelink">Reset Password</span></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--ResetPassword-->
+        <section id="page9" class="content" style="display:none;">
+            <div class="content-centre">
+                <div class="card card-signin mt-5 card-expand">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Reset your password</h5>
+                        <form id="sendResetPasswordForm">
+                            <div class="form-label-group">
+                                <input name="username" type="text" class="form-control" placeholder="Username or Email">
+                                <div name="usernameError" class="validation-error" style="display:none;"></div>
+                            </div>
+                            <button id="btnSendResetPassword" class="btn btn-primary btn-block text-uppercase" type="submit">Send</button>
+                        </form>
+                        <form id="resetPasswordForm" style="display:none;">
+                            <div class="form-label-group">
+                                <input name="code" type="text" class="form-control" placeholder="Code">
+                                <div name="codeError" class="validation-error" style="display:none;"></div>
+                            </div>
+                            <div class="form-label-group">
+                                <input name="password" type="password" class="form-control" placeholder="Password">
+                            </div>
+                            <div class="form-label-group">
+                                <input name="confirmPassword" type="password" class="form-control" placeholder="Retype password">
+                                <div name="passwordError" class="validation-error" style="display:none;"></div>
+                            </div>
+                            <div class="form-label-group">
+                                <button id="btnResetPassword" class="btn btn-primary btn-block text-uppercase" type="submit">Submit</button>
+                                <div name="resetError" class="validation-error" style="display:none;"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Register-->
+        <section id="page5" class="content" style="display:none;">
+            <div class="content-centre">
+                <div class="card card-signin mt-5 card-expand">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Register</h5>
+                        <form id="registerForm">
+                            <div class="form-label-group">
+                                <input name="username" type="text" class="form-control" placeholder="Username">
+                                <div name="usernameError" class="validation-error" style="display:none;"></div>
+                            </div>
+                            <div class="form-label-group">
+                                <input name="emailAddress" type="email" class="form-control" placeholder="Email address">
+                                <div name="emailError" class="validation-error" style="display:none;"></div>
+                            </div>
+                            <div class="form-label-group">
+                                <input name="password" type="password" class="form-control" placeholder="Password">
+                            </div>
+                            <div class="form-label-group">
+                                <input name="confirmPassword" type="password" class="form-control" placeholder="Retype password">
+                                <div name="passwordError" class="validation-error" style="display:none;"></div>
+                            </div>
+                            <div class="custom-control custom-checkbox mb-3">
+                                <input name="rememberMe" type="checkbox" class="custom-control-input" id="registerRememberMe">
+                                <label class="custom-control-label" for="registerRememberMe">Keep me logged in</label>
+                            </div>
+                            <div class="form-label-group">
+                                <button id="btnRegister" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+                            </div>
+                        </form>
+                        <div class="mt-2">
+                            <span>Or <span id="gotoLogin" class="pagelink">Login</span> instead</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Account-->
+        <section id="page6" class="content" style="display:none;">
+            <div class="content-centre">
+                <div class="card card-signin mt-5 card-expand">
+                    <div class="card-body">
+                        <div>
+                            <button id="btnLogOut" class="btn btn-lg btn-primary btn-block mb-3">Log Out</button>
+                        </div>
+                        <div class="form-container">
+                            <button id="btnSendVerifyEmail" class="btn btn-lg btn-primary btn-block">Verify Email Address</button>
+                            <div id="sendVerifyEmailError" class="validation-error" style="display:none;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--VerifyEmail-->
+        <section id="page8" class="content" style="display:none;">
+            <div class="content-centre">
+                <div class="card card-signin mt-5 card-expand p-4">
+                    <form id="verifyEmailForm">
+                        <div class="form-label-group">
+                            <input name="code" type="text" class="form-control" placeholder="Code">
+                            <div name="codeError" class="validation-error" style="display:none;"></div>
+                        </div>
+                        <div class="form-label-group">
+                            <button id="btnVerifyEmail" class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!--MyParts-->
+        <section id="page7" class="content content-scroll" style="display:none;">
+            <div class="input-group px-2 py-1 bg-white rounded rounded-pill shadow-sm my-2 search-container">
+                <input id="searchMyParts" type="text" class="form-control border-0 bg-white search-box" placeholder="Search">
+                <div class="input-group-append">
+                    <button id="btnSearchMyParts" type="submit" class="btn btn-link text-primary"><span class="fa fa-search"></span></button>
+                </div>
+            </div>
+            <div>
+                <ul id="myparts-container" class="parts-list"></ul>
+            </div>
+        </section>
+        <!--AddParts-->
+        <section id="page10" class="content content-scroll" style="display:none;">
+            <div class="input-group px-2 py-1 bg-white rounded rounded-pill shadow-sm my-2 search-container">
+                <input id="searchAddParts" type="text" class="form-control border-0 bg-white search-box" placeholder="Search">
+                <div class="input-group-append">
+                    <button id="btnSearchAddParts" class="btn btn-link text-primary"><span class="fa fa-search"></span></button>
+                </div>
+            </div>
+            <div style="padding:0 2px; position:relative">
+                <button id="btnChooseCategory" class="btn btn-lg btn-primary btn-block my-2">Select Category</button>
+                <button id="btnRemoveCategory" style="display:none;"><span class="fas fa-times"></span></button>
+            </div>
+            <div>
+                <ul id="addparts-container" class="parts-list"></ul>
+            </div>
+        </section>
+        <!--Category-->
+        <section id="page11" class="content content-scroll" style="display:none;">
+            <ul id="category-container" class="parts-list"></ul>
+        </section>
+        <!--Part-->
+        <section id="page12" class="content" style="display:none;">
+            <div class="part-details">
+                <div id="addPart-id" class="part-id" style="display:none;"></div>
+                <div id="addPart-img" class="part-img"><img src="/images/part-missing.png"></div>
+                <div id="addPart-name" class="part-name"></div>
+                <div class="part-code-label">Code:</div>
+                <div id="addPart-code" class="part-code"></div>
+                <div class="part-qty-label">Qty:</div>
+                <input id="addPart-qty" class="form-control part-qty-input" type="number" value="1">
+            </div>
+        </section>
+        <!--Sets-->
+        <section id="page13" class="content content-scroll" style="display:none;">
+            <ul id="sets-container" class="sets-list"></ul>
+            <div id="sets-message" class="content-centre" style="display:none;">
+                <div class="card card-signin mt-5 card-expand">
+                    <div class="card-body">
+                        <div class="my-3 text-center">
+                            <p>Could not find any sets for you to build.</p>
+                            <p>Try adding more bricks to your collection.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
